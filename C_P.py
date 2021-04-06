@@ -57,7 +57,7 @@ class Bowler:
 
 class Team(Bowler, Batsman):
     NUMBER_OF_TEAMS = 0
-    def __init__(self, id = NUMBER_OF_TEAMS+1, name = None, n_members = 11):
+    def __init__(self, id = NUMBER_OF_TEAMS+1, name = None, n_members = 11, ):
         Team.NUMBER_OF_TEAMS += 1
         self.team_id = id
         self.team_name = name
@@ -68,3 +68,10 @@ class Team(Bowler, Batsman):
         return self.team_name
     def get_n_member(self):
         return self.n_team_members
+
+class Cricket(Team):
+    def __init__(self):
+        print("\t\t*********************WEL-COME TO CRICKET BOARD******************")
+        self.teamA =  super().__init__(name = input("Enter First Team Name: "), n_members= int(input('Enter Number of Members: ')))
+        self.teamB = super().__init__(name= input('Enter Second Team Name: '), n_members=int(input("Enter Number of Members: ")))        
+match = Cricket()
