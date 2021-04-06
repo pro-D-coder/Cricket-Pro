@@ -1,12 +1,15 @@
 class Batsman:
-    def __init__(self, name =  None, j_num = None, score = 0, status = True, played_bowls = 0):
+    def __init__(self, Team, name =  None, j_num = None, score = 0, status = True, played_bowls = 0):
         self.bat_name = name
         self.bat_j_num = j_num
         self.score = score
         self.status = status
         self.played_bowls = played_bowls
+        self.bat_Team = Team
     def get_score(self):
         return self.score
+    def get_bat_Team(self):
+        return self.bat_Team
     def get_played_bowls(self):
         return self.played_bowls
     def get_name(self):
@@ -28,7 +31,7 @@ class Bowler:
         self.wickets = wickets
         self.bow_over = over
         self.bow_balls =  balls
-        self.Team = Team
+        self.bow_Team = Team
     def get_bow_name(self):
         return self.bow_name
     def get_bow_Team(self):
@@ -51,15 +54,17 @@ class Bowler:
         self.bow_over += overs
     def update_balls(self, ball = 1):
         self.bow_balls += balls
+
 class Team(Bowler, Batsman):
     NUMBER_OF_TEAMS = 0
-    def __init__(self, id = NUMBER_OF_TEAMS+1, name = None, members = 11):
+    def __init__(self, id = NUMBER_OF_TEAMS+1, name = None, n_members = 11):
         Team.NUMBER_OF_TEAMS += 1
         self.team_id = id
         self.team_name = name
-        self.team_members = members
+        self.n_team_members = n_members
     def __repr__(self):
         return self.team_name
-
-c = Team()
-print(c.NUMBER_OF_TEAMS)
+    def get_team_name(self):
+        return self.team_name
+    def get_n_member(self):
+        return self.n_team_members
